@@ -1,0 +1,5 @@
+function distributeCandies(candyType) {
+  const maxTypes = candyType.length / 2;
+  const uniqueTypes = new Set(candyType);
+  return Math.min(maxTypes, uniqueTypes.size);
+}
