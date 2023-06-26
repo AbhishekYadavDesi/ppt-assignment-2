@@ -1,0 +1,28 @@
+function minimumScore(nums, k) {
+  const n = nums.length;
+  let minScore = Infinity;
+  let maxScore = -Infinity;
+
+  for (let i = 0; i < n; i++) {
+    minScore = Math.min(minScore, nums[i]);
+    maxScore = Math.max(maxScore, nums[i]);
+  }
+
+  if (k === 0) {
+    return maxScore - minScore;
+  }
+
+  const target = Math.floor((maxScore + minScore) / 2);
+
+  for (let i = 0; i < n; i++) {
+    if (nums[i] > target) {
+      nums[i] -= k;
+    } else {
+      nums[i] += k;
+    }
+    minScore = Math.min(minScore, nums[i]);
+    maxScore = Math.max(maxScore, nums[i]);
+  }
+
+  return maxScore - minScore;
+}
